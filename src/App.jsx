@@ -10,28 +10,25 @@ function App() {
     setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
   };
 
- const updateTodo = (id, updatedTodo) => {
-  setTodos((prev) =>
-    prev.map((prevTodo) =>
-      prevTodo.id === id ? updatedTodo : prevTodo
-    )
-  );
-};
+  const updateTodo = (id, updatedTodo) => {
+    setTodos((prev) =>
+      prev.map((prevTodo) => (prevTodo.id === id ? updatedTodo : prevTodo))
+    );
+  };
 
-const deleteTodo = (id) => {
-  setTodos((prev) => prev.filter((todo) => todo.id !== id));
-};
+  const deleteTodo = (id) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  };
 
-
-const ToggleComplete = (id) => {
-  setTodos((prev) =>
-    prev.map((prevTodo) =>
-      prevTodo.id === id
-        ? { ...prevTodo, completed: !prevTodo.completed }
-        : prevTodo
-    )
-  );
-};
+  const ToggleComplete = (id) => {
+    setTodos((prev) =>
+      prev.map((prevTodo) =>
+        prevTodo.id === id
+          ? { ...prevTodo, completed: !prevTodo.completed }
+          : prevTodo
+      )
+    );
+  };
 
   useEffect(() => {
     const todos = JSON.parse(localStorage.getItem("todos"));
